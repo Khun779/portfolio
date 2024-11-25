@@ -229,29 +229,96 @@ footer p {
 
 /* Responsive design */
 @media (max-width: 768px) {
-    /* Adjust header for mobile */
     #header {
-        padding: 0.5rem 0;
+        padding: 0.8rem 0;
     }
     
     #header .container {
         flex-direction: column;
         text-align: center;
-        padding: 10px;
+        padding: 5px 15px;
     }
     
-    /* Fix the content overlap issue */
-    section {
-        padding: 60px 0;
-        margin-top: 140px; /* Increased from 40px to account for larger header height */
+    .header-left {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .profile-image {
+        width: 45px;
+        height: 45px;
+        border-width: 1.5px;
+    }
+    
+    .header-text h1 {
+        font-size: 1.2rem;
+        margin: 0;
+    }
+    
+    .header-text p {
+        font-size: 0.8rem;
+        margin: 0;
+    }
+    
+    #header nav {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        width: 100%;
+        max-width: 300px;
+        margin: 0.5rem auto 0;
+    }
+    
+    #header nav a {
+        font-size: 0.9rem;
+        padding: 0.4rem 0;
+        background: rgba(100, 255, 218, 0.1);
+        border-radius: 20px;
+        border: 1px solid rgba(100, 255, 218, 0.2);
+        text-align: center;
+        width: 100%;
+    }
+    
+    #header nav a:hover {
+        background: rgba(100, 255, 218, 0.2);
     }
 
-    /* Specifically adjust first section to prevent overlap */
+    section {
+        margin-top: 120px;
+    }
+
     section#about {
-        margin-top: 200px; /* Even more space for the first section */
+        margin-top: 160px;
+    }
+}
+
+/* Extra small devices (phones like Samsung A05s) */
+@media (max-width: 360px) {
+    .header-left {
+        flex-direction: row;
+        gap: 0.5rem;
     }
     
-    /* Rest of your existing mobile styles... */
+    .profile-image {
+        width: 40px;
+        height: 40px;
+    }
+    
+    #header nav {
+        gap: 6px;
+        max-width: 280px;
+    }
+    
+    #header nav a {
+        font-size: 0.8rem;
+        padding: 0.3rem 0;
+    }
+    
+    section#about {
+        margin-top: 180px;
+    }
 }
 
 /* Tablet-specific adjustments */
@@ -307,7 +374,7 @@ footer p {
     }
     
     section#about {
-        margin-top: 240px; /* More space for smaller phones */
+        margin-top: 240px;
     }
 }
 
