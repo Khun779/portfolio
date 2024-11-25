@@ -15,26 +15,30 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Adjust header visibility on scroll
+// Adjust header visibility on scroll with delay only for scrolling up
 const header = document.getElementById('header');
 let lastScroll = 0;
-let hideTimeout;
+let showTimer = null;
 
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
     
-    // Clear any existing timeout
-    clearTimeout(hideTimeout);
-    
-    // Determine scroll direction and position
     if (currentScroll > lastScroll && currentScroll > 100) {
-        // Scrolling DOWN & not at top - hide header
+        // Scrolling DOWN - hide header immediately
+        if (showTimer !== null) {
+            clearTimeout(showTimer);
+        }
         header.style.transform = 'translateY(-100%)';
         header.style.transition = 'transform 0.3s ease-in-out';
     } else {
-        // Scrolling UP or at top - show header
-        header.style.transform = 'translateY(0)';
-        header.style.transition = 'transform 0.3s ease-in-out';
+        // Scrolling UP - show header with delay
+        if (showTimer !== null) {
+            clearTimeout(showTimer);
+        }
+        showTimer = setTimeout(() => {
+            header.style.transform = 'translateY(0)';
+            header.style.transition = 'transform 0.4s ease-in-out';
+        }, 400); // Delay before showing when scrolling up
     }
     
     // Add/remove background based on scroll position
